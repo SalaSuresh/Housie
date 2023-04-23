@@ -57,7 +57,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:icon="@drawable/ic_baseline_wifi_24"
                 app:iconGravity="start"
                 app:iconSize="40dp" />
