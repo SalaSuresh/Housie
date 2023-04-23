@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonNumberCaller"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="@string/number_caller"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:icon="@drawable/ic_baseline_auto_mode_24"
+                app:iconGravity="start"
+                app:iconSize="40dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonTicketGenerator"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="@string/ticket_generator"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:icon="@drawable/ic_baseline_calendar_view_month_24"
+                app:iconGravity="start"
+                app:iconSize="40dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonWifiDirect"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:text="@string/wifi_direct"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:icon="@drawable/ic_baseline_wifi_24"
+                app:iconGravity="start"
+                app:iconSize="40dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

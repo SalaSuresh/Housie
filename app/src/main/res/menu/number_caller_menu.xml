@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuShuffle"
+        android:icon="@drawable/ic_baseline_shuffle_24"
+        android:title="@string/shuffle"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menuRestart"
+        android:icon="@drawable/ic_baseline_restart_alt_24"
+        android:title="@string/restart"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menuAudio"
+        android:icon="@drawable/ic_baseline_volume_up_24"
+        android:title="@string/audio"
+        app:showAsAction="always" />
+
+</menu>

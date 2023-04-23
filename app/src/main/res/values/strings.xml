@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Housie Club</string>
+    <string name="number_caller">Number Caller</string>
+    <string name="ticket_generator">Ticket Generator</string>
+    <string name="client">Client</string>
+    <string name="admin">Admin</string>
+    <string name="wifi_direct">Wifi Direct</string>
+    <string name="turn_on_wifi">Turn On Wifi</string>
+    <string name="discover">Discover</string>
+    <string name="game_over">Game Over</string>
+    <string name="call_number">Call Number</string>
+    <string name="full">Full</string>
+    <string name="generate_ticket">Generate Ticket</string>
+    <string name="line_3">Line 3</string>
+    <string name="line_2">Line 2</string>
+    <string name="line_1">Line 1</string>
+    <string name="_5_numbers">5 Numbers</string>
+    <string name="_00">00</string>
+    <string name="restart">Restart</string>
+    <string name="audio">Audio</string>
+    <string name="do_you_want_to_restart">Do you want to restart?</string>
+    <string name="do_you_want_to_exit">Do you want to exit?</string>
+    <string name="do_you_want_to_exit_from_caller">Do you want to exit from number caller?</string>
+    <string name="do_you_want_to_exit_from_game">Do you want to exit from game?</string>
+    <string name="alert">Alert</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="smile">☺</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="connect">Connect</string>
+</resources>
