@@ -20,6 +20,13 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityNumberCallerBinding
 import com.example.myapplication.utils.SharedPreferenceUtils
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import java.util.Arrays
 import java.util.Locale
 import java.util.Random
 
@@ -34,11 +41,17 @@ class NumberCallerActivity : AppCompatActivity(), TextToSpeech.OnInitListener,
     private lateinit var binding: ActivityNumberCallerBinding
     private var isMuted: Boolean = false
     private lateinit var musicShuffle: MediaPlayer
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNumberCallerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val testDeviceIds = Arrays.asList("BAECF24679C6C394318EACC12ED9BD78")
+        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
+        MobileAds.setRequestConfiguration(configuration)
+
         binding.buttonCall.setOnClickListener {
             callNumber()
         }
@@ -75,6 +88,9 @@ class NumberCallerActivity : AppCompatActivity(), TextToSpeech.OnInitListener,
     override fun onResume() {
         super.onResume()
         isMuted = SharedPreferenceUtils.getIsMuted(this@NumberCallerActivity)
+        val bannerAdRequest = AdRequest.Builder().build()
+        binding.bannerAd.loadAd(bannerAdRequest)
+        loadFullScreenAd()
     }
 
     private fun generateNumbers() {
@@ -253,11 +269,40 @@ class NumberCallerActivity : AppCompatActivity(), TextToSpeech.OnInitListener,
         binding.textCalledNumber.text = getString(R.string.smile)
         showNumberLayout()
         binding.buttonCall.text = getString(R.string.call_number)
+
+        showFullScreenAd()
     }
 
     override fun onCompletion(mp: MediaPlayer?) {
 
     }
 
+    private fun loadFullScreenAd() {
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-6485501165399913/6394444307",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d("ads", adError.toString().toString())
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d("ads", "Ad was loaded.")
+                    mInterstitialAd = interstitialAd
+                }
+            })
+    }
+
+    private fun showFullScreenAd() {
+        try {
+            mInterstitialAd!!.show(this@NumberCallerActivity)
+        } catch (e: Exception) {
+            Log.d("ads", "Ad Exception: " + e.localizedMessage)
+        }
+
+    }
 
 }

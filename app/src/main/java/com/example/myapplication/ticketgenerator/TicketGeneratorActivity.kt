@@ -16,6 +16,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityTicketGeneratorBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import java.util.Random
 
 class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
@@ -36,6 +40,8 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
 
     private lateinit var musicRaise: MediaPlayer
     private lateinit var musicFull: MediaPlayer
+
+    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +66,41 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
                 showExitGameDialog()
             }
         })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val bannerAdRequest = AdRequest.Builder().build()
+        binding.bannerAd.loadAd(bannerAdRequest)
+        loadFullScreenAd()
+    }
+
+    private fun loadFullScreenAd() {
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(
+            this,
+            "ca-app-pub-6485501165399913/6394444307",
+            adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdFailedToLoad(adError: LoadAdError) {
+                    Log.d("ads", adError.toString().toString())
+                    mInterstitialAd = null
+                }
+
+                override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                    Log.d("ads", "Ad was loaded.")
+                    mInterstitialAd = interstitialAd
+                }
+            })
+    }
+
+    private fun showFullScreenAd() {
+        try {
+            mInterstitialAd!!.show(this@TicketGeneratorActivity)
+        } catch (e: Exception) {
+            Log.d("ads", "Ad Exception: " + e.localizedMessage)
+        }
+
     }
 
     private fun showExitGameDialog() {
@@ -363,6 +404,7 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
             binding.chipFull.chipBackgroundColor = getColorStateList(R.color.purple_500)
             binding.animationSuccess.playAnimation()
             musicFull.start()
+            showFullScreenAd()
         }
 
         if (view.tag.toString().startsWith("0")) {

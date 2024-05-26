@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.suresh.housie"
@@ -12,12 +12,10 @@ android {
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
-
         release {
             storeFile file(RELEASE_STORE_FILE)
             storePassword RELEASE_STORE_PASSWORD
@@ -64,6 +62,7 @@ dependencies {
 //    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.security:security-crypto:1.0.0'
     implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'com.google.android.gms:play-services-ads:23.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

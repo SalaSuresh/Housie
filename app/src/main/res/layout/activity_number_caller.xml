@@ -10,6 +10,17 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/bannerAd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="SMART_BANNER"
+            app:adUnitId="ca-app-pub-6485501165399913/8737450894"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="8dp" />
+
         <TextView
             android:id="@+id/textCalledNumber"
             android:layout_width="wrap_content"
@@ -23,7 +34,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bannerAd"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <RelativeLayout
