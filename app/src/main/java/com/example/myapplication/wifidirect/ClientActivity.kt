@@ -74,29 +74,29 @@ class ClientActivity : AppCompatActivity() {
     private fun connectDevice() {
         val wifiP2pConfig = WifiP2pConfig()
         wifiP2pConfig.deviceAddress = deviceAddress
-        manager.connect(channel, wifiP2pConfig, object: WifiP2pManager.ActionListener{
-            override fun onSuccess() {
-                TODO("Not yet implemented")
-            }
-
-            override fun onFailure(p0: Int) {
-                TODO("Not yet implemented")
-            }
-
-        })
+//        manager.connect(channel, wifiP2pConfig, object: WifiP2pManager.ActionListener{
+//            override fun onSuccess() {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun onFailure(p0: Int) {
+//                TODO("Not yet implemented")
+//            }
+//
+//        })
     }
 
     private fun startDiscovery() {
-        manager.discoverPeers(channel, object : ActionListener {
-            override fun onSuccess() {
-                Log.d("test", "Discovery Started")
-            }
-
-            override fun onFailure(p0: Int) {
-                Log.d("test", "-----------------------Discovery Starting failed $p0")
-            }
-
-        })
+//        manager.discoverPeers(channel, object : ActionListener {
+//            override fun onSuccess() {
+//                Log.d("test", "Discovery Started")
+//            }
+//
+//            override fun onFailure(p0: Int) {
+//                Log.d("test", "-----------------------Discovery Starting failed $p0")
+//            }
+//
+//        })
     }
 
     private fun turnOnOffWifi() {
