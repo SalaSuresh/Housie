@@ -1,5 +1,6 @@
 package com.example.myapplication.ticketgenerator
 
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -20,7 +21,11 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.qrcode.QRCodeWriter
 import java.util.Random
+
 
 class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
 
@@ -59,6 +64,8 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
 
         binding.animationSuccess.setAnimation("success_animation.json")
 
+        testFunction()
+
         generateBlocks()
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -66,6 +73,28 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
                 showExitGameDialog()
             }
         })
+    }
+
+    private fun testFunction() {
+        binding.textTicketId.text = "${generateRandomNumber()}"
+        val size = 512 //pixels
+        val qrCodeContent = binding.textTicketId.text.toString()
+        val hints = hashMapOf<EncodeHintType, Int>().also { it[EncodeHintType.MARGIN] = 1 } // Make the QR code buffer border narrower
+        val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size, hints)
+        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
+            for (x in 0 until size) {
+                for (y in 0 until size) {
+                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
+                }
+            }
+        }
+        binding.imageQRCode.setImageBitmap(bitmap)
+    }
+
+    private fun generateRandomNumber(): Int {
+        val random = Random()
+        // Generates a number between 10000 (inclusive) and 99999 (inclusive)
+        return 10000 + random.nextInt(90000)
     }
 
     override fun onResume() {
@@ -287,8 +316,8 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
         if (text != "0") {
             button.setOnClickListener(this)
         }
-        val params = LinearLayout.LayoutParams(130, 130)
-        params.setMargins(5, 5, 5, 5)
+        val params = LinearLayout.LayoutParams(100, 100)
+        params.setMargins(3, 3, 3, 3)
         button.layoutParams = params
         return button
     }
