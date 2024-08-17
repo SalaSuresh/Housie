@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Gravity
 import android.view.View
@@ -268,8 +269,8 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
         val column = LinearLayout(this)
         column.layoutParams =
             LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
             )
         column.orientation = VERTICAL
         column.gravity = Gravity.CENTER
@@ -316,7 +317,12 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
         if (text != "0") {
             button.setOnClickListener(this)
         }
-        val params = LinearLayout.LayoutParams(150, 150)
+
+        val metrics = DisplayMetrics()
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        val tileSize = getDPI(65 , metrics);
+
+        val params = LinearLayout.LayoutParams(tileSize, tileSize)
         params.setMargins(3, 3, 3, 3)
         button.layoutParams = params
         return button
@@ -458,5 +464,9 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
                 musicRaise.start()
             }
         }
+    }
+
+    private fun getDPI(size: Int, metrics: DisplayMetrics): Int {
+        return (size * metrics.densityDpi) / DisplayMetrics.DENSITY_DEFAULT
     }
 }

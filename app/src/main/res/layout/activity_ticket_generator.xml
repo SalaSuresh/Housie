@@ -42,7 +42,7 @@
 
         <LinearLayout
             android:id="@+id/ticketLayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
