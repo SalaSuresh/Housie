@@ -12,7 +12,7 @@
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/bannerAd"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:adSize="SMART_BANNER"
             app:adUnitId="ca-app-pub-6485501165399913/8737450894"
@@ -55,6 +55,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/ticketLayout">

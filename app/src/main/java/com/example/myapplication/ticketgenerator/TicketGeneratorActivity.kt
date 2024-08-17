@@ -299,7 +299,7 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
     private fun createButton(text: String, tag: String): Button {
         val button = Button(this)
         button.isAllCaps = false
-        button.textSize = 24.0f
+        button.textSize = 28.0f
         button.setTextColor(Color.BLACK)
         button.tag = tag
         button.setBackgroundColor(
@@ -320,7 +320,7 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
 
         val metrics = DisplayMetrics()
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        val tileSize = getDPI(65 , metrics);
+        val tileSize = getDPI(70 , metrics);
 
         val params = LinearLayout.LayoutParams(tileSize, tileSize)
         params.setMargins(3, 3, 3, 3)
