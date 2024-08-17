@@ -316,7 +316,7 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
         if (text != "0") {
             button.setOnClickListener(this)
         }
-        val params = LinearLayout.LayoutParams(100, 100)
+        val params = LinearLayout.LayoutParams(150, 150)
         params.setMargins(3, 3, 3, 3)
         button.layoutParams = params
         return button
