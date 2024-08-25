@@ -16,7 +16,7 @@
 
     <item
         android:id="@+id/menuAudio"
-        android:icon="@drawable/ic_baseline_volume_up_24"
+        android:icon="@drawable/baseline_record_voice_over_24"
         android:title="@string/audio"
         app:showAsAction="always" />
 
