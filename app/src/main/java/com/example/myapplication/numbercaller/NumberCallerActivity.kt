@@ -206,9 +206,9 @@ class NumberCallerActivity : AppCompatActivity(), TextToSpeech.OnInitListener,
         menu?.getItem(2)?.icon = AppCompatResources.getDrawable(
             this@NumberCallerActivity,
             if (isMuted) {
-                R.drawable.ic_baseline_volume_off_24
+                R.drawable.baseline_voice_over_off_24
             } else {
-                R.drawable.ic_baseline_volume_up_24
+                R.drawable.baseline_record_voice_over_24
             }
         )
         return true
@@ -231,9 +231,9 @@ class NumberCallerActivity : AppCompatActivity(), TextToSpeech.OnInitListener,
             item.icon = AppCompatResources.getDrawable(
                 this@NumberCallerActivity,
                 if (isMuted) {
-                    R.drawable.ic_baseline_volume_off_24
+                    R.drawable.baseline_voice_over_off_24
                 } else {
-                    R.drawable.ic_baseline_volume_up_24
+                    R.drawable.baseline_record_voice_over_24
                 }
             )
             true
