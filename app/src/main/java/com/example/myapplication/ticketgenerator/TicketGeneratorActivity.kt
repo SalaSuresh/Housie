@@ -65,7 +65,7 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
 
         binding.animationSuccess.setAnimation("success_animation.json")
 
-        testFunction()
+        showTicketId()
 
         generateBlocks()
 
@@ -76,23 +76,23 @@ class TicketGeneratorActivity : AppCompatActivity(), OnClickListener {
         })
     }
 
-    private fun testFunction() {
-        binding.textTicketId.text = "${generateRandomNumber()}"
-        val size = 512 //pixels
-        val qrCodeContent = binding.textTicketId.text.toString()
-        val hints = hashMapOf<EncodeHintType, Int>().also { it[EncodeHintType.MARGIN] = 1 } // Make the QR code buffer border narrower
-        val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size, hints)
-        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
-            for (x in 0 until size) {
-                for (y in 0 until size) {
-                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
-                }
-            }
-        }
-        binding.imageQRCode.setImageBitmap(bitmap)
+    private fun showTicketId() {
+        binding.textTicketId.text = "Ticket Id: ${generateTicketId()}"
+//        val size = 512 //pixels
+//        val qrCodeContent = binding.textTicketId.text.toString()
+//        val hints = hashMapOf<EncodeHintType, Int>().also { it[EncodeHintType.MARGIN] = 1 } // Make the QR code buffer border narrower
+//        val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size, hints)
+//        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
+//            for (x in 0 until size) {
+//                for (y in 0 until size) {
+//                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
+//                }
+//            }
+//        }
+//        binding.imageQRCode.setImageBitmap(bitmap)
     }
 
-    private fun generateRandomNumber(): Int {
+    private fun generateTicketId(): Int {
         val random = Random()
         // Generates a number between 10000 (inclusive) and 99999 (inclusive)
         return 10000 + random.nextInt(90000)
